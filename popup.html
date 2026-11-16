@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 380px; padding: 12px; font-family: system-ui, sans-serif; }
+    h2 { margin: 0 0 8px; color: #1a73e8; font-size: 1.1rem; }
+    button { width: 100%; padding: 8px; margin: 4px 0; border: none; border-radius: 6px; cursor: pointer; }
+    #record { background: #d32f2f; color: white; }
+    #record.recording { background: #388e3c; }
+    #download { background: #1a73e8; color: white; }
+    input, textarea { width: 100%; margin: 4px 0; padding: 6px; box-sizing: border-box; border: 1px solid #ddd; border-radius: 4px; }
+    #status { font-size: 0.85rem; color: #5f6368; margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <h2>🎙️ Transcripteur Pro</h2>
+  <input type="text" id="sujet" placeholder="Sujet du jour">
+  <input type="text" id="lieu" placeholder="Lieu">
+  <input type="text" id="personnes" placeholder="Personnes">
+  <button id="record">▶ Démarrer</button>
+  <button id="download" disabled>💾 Télécharger .wav</button>
+  <div id="status">Prêt — rien n'est écouté</div>
+  <textarea id="transcript" rows="4" readonly placeholder="Transcription..."></textarea>
+  <script src="popup.js"></script>
+</body>
+</html>

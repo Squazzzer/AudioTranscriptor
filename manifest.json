@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Transcripteur Audio Multilingue Pro",
+  "version": "1.0",
+  "description": "Enregistrement audio sur demande uniquement, transcription basique, métadonnées pour cohérence quotidienne, export .wav. Rien n'est écouté avant le clic.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Transcripteur Pro"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

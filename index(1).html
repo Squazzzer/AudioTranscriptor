@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transcripteur Audio Multilingue Pro</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+  <style>
+    :root { --primary: #1a73e8; --danger: #d32f2f; --success: #388e3c; }
+    body { font-family: system-ui, -apple-system, sans-serif; max-width: 680px; margin: 0 auto; padding: 1rem; background: #f8f9fa; color: #202124; }
+    h1 { color: var(--primary); text-align: center; margin-bottom: 0.5rem; }
+    .subtitle { text-align: center; color: #5f6368; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .controls { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
+    button { font-size: 1rem; padding: 0.75rem 1.5rem; border: none; border-radius: 24px; cursor: pointer; font-weight: 500; }
+    #recordBtn { background: var(--danger); color: white; }
+    #recordBtn.recording { background: var(--success); }
+    #stopBtn, #downloadBtn, #saveMetaBtn { background: var(--primary); color: white; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    #status { text-align: center; font-weight: 500; margin: 1rem 0; padding: 0.75rem; background: white; border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .meta-box, .output-box { background: white; padding: 1rem; border-radius: 8px; margin: 1rem 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    label { display: block; font-weight: 500; margin: 0.5rem 0 0.25rem; font-size: 0.9rem; }
+    input, textarea { width: 100%; padding: 0.6rem; border: 1px solid #dadce0; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+    textarea { min-height: 100px; resize: vertical; }
+    .note { font-size: 0.8rem; color: #5f6368; margin-top: 1.5rem; padding: 0.75rem; background: #e8f0fe; border-radius: 6px; }
+    .history { margin-top: 1.5rem; }
+    .history-item { background: white; padding: 0.75rem; margin: 0.5rem 0; border-radius: 6px; border-left: 4px solid var(--primary); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <h1>🎙️ Transcripteur Pro</h1>
+  <p class="subtitle">Enregistrement uniquement sur demande • Cohérence quotidienne • Format .wav • Drive</p>
+
+  <div class="meta-box">
+    <label>Sujet / Contexte du jour (pour cohérence des enregistrements)</label>
+    <input type="text" id="sujet" placeholder="Ex: Réunion équipe, Allocution publique, Interview...">
+    <label>Lieu</label>
+    <input type="text" id="lieu" placeholder="Ex: Bureau, Salle de conférence, Extérieur...">
+    <label>Personnes présentes</label>
+    <input type="text" id="personnes" placeholder="Ex: Jean, Marie, Maire...">
+    <button id="saveMetaBtn" style="margin-top:0.5rem;">💾 Enregistrer métadonnées du jour</button>
+  </div>
+
+  <div class="controls">
+    <button id="recordBtn">▶ Démarrer l'enregistrement</button>
+    <button id="stopBtn" disabled>■ Arrêter</button>
+  </div>
+
+  <div id="status">Prêt — rien n'est écouté ni enregistré</div>
+
+  <div class="output-box">
+    <label>Transcription (langue d'origine)</label>
+    <textarea id="transcript" readonly placeholder="Transcription après arrêt..."></textarea>
+    <label>Traduction française</label>
+    <textarea id="translation" readonly placeholder="Traduction (qualité basique navigateur ou via bot Grok)..."></textarea>
+  </div>
+
+  <div class="controls">
+    <button id="downloadBtn" disabled>💾 Télécharger .wav</button>
+  </div>
+
+  <div class="history" id="history"></div>
+
+  <div class="note">
+    <strong>Confidentialité :</strong> Le micro n'est activé que lorsque vous appuyez sur « Démarrer ». Les métadonnées (sujet, lieu, personnes) sont stockées localement pour regrouper les enregistrements du même jour.<br>
+    <strong>Drive :</strong> Pour uploader automatiquement le .wav sur votre Google Drive, connectez-vous (nécessite configuration OAuth client). Sinon téléchargez le .wav et uploadez-le manuellement ou via le bot Grok.<br>
+    Version partageable gratuite. Pour transcription professionnelle + Drive automatique, utilisez le bot Grok « Transcripteur Audio Multilingue Pro ».
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
